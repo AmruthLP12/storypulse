@@ -1,0 +1,51 @@
+### Image Upload Test
+# POST http://localhost:3000/api/blog
+# Content-Type: multipart/form-data
+
+# --boundary
+# Content-Disposition: form-data; name="image"; filename="blog_pic_1.png"
+# Content-Type: image/png
+
+#  D:\Next\storypulse\Assets\blog_pic_1.png
+# --boundary--
+
+POST http://localhost:3000/api/blog HTTP/1.1
+Content-Type: multipart/form-data; boundary=MfnBoundry
+
+--MfnBoundry
+Content-Disposition: form-data; name="image"; filename="blog_pic_1.png"
+Content-Type: image/png
+
+< D:\Next\storypulse\Assets\blog_pic_2.png
+--MfnBoundry--
+
+### Blog Creation with Image Upload
+POST http://localhost:3000/api/blog
+Content-Type: multipart/form-data; boundary=Boundary_123456
+
+--Boundary_123456
+Content-Disposition: form-data; name="title"
+
+My Blog Title
+--Boundary_123456
+Content-Disposition: form-data; name="description"
+
+This is a description of the blog.
+--Boundary_123456
+Content-Disposition: form-data; name="category"
+
+Technology
+--Boundary_123456
+Content-Disposition: form-data; name="author"
+
+John Doe
+--Boundary_123456
+Content-Disposition: form-data; name="author_img"
+
+/author_image_path.png
+--Boundary_123456
+Content-Disposition: form-data; name="image"; filename="blog_pic_5.png"
+Content-Type: image/png
+
+< D:\Next\storypulse\Assets\blog_pic_5.png
+--Boundary_123456--
